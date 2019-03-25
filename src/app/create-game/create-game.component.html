@@ -1,0 +1,51 @@
+<form
+  [formGroup]="createGame"
+  (ngSubmit)="onCreateGame()"
+  >
+  <label for="name">Name of Game</label>
+  <input
+    formControlName = "name"
+    type = "text"
+    name = "name"
+    required
+  >
+
+  <label for="genre">Genre</label>
+  <input
+    formControlName = "genre"
+    type="text"
+    name = "genre"
+    required
+  >
+
+  <label for="ageRating">Age Rating</label>
+  <select
+    formControlName = "ageRating"
+    name = "ageRating"
+    required
+    >
+  <option
+    *ngFor="let ar of ageRatings"
+    value="{{ ar }}">{{ ar }}</option>
+  </select>
+
+  <label for="system">System</label>
+  <input
+    formControlName = "system"
+    type = "text"
+    name = "system"
+    required
+  >
+  <button
+  type="submit"
+  >
+  Submit
+  </button>
+</form>
+
+<div *ngIf="games.length !== 0; else noGame">
+  <app-display-game
+  *ngFor="let game of games"
+  [game]="game"
+  ></app-display-game>
+</div>
