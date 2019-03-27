@@ -5,6 +5,28 @@
       <h3>{{ _game.genre }}</h3>
         <p>{{ _game.ageRating }}</p>
         <p>{{ _game.system }}</p>
+        <p>id: {{ game.id }}</p>
+        <p><button type="button" (click)="onDeleteGame(game.id)">Delete</button><button type="button" (click)="onUpdateGame(game)">Update</button></p>
     </div>
   </div>
 </div>
+
+<div *ngIf="selectedGame">
+    <h2>{{selectedGame.name | uppercase}} Details</h2>
+    <div><span>ID: </span>{{selectedGame.id}}</div>
+    <div>
+      <label>Name:
+        <input [(ngModel)]="selectedGame.name" placeholder="name"/>
+      </label>
+      <label>Genre:
+          <input [(ngModel)]="selectedGame.genre" placeholder="genre"/>
+        </label>
+        <label>Age Rating:
+            <input [(ngModel)]="selectedGame.ageRating" placeholder="ageRating"/>
+          </label>
+          <label>System:
+              <input [(ngModel)]="selectedGame.system" placeholder="system"/>
+            </label>
+    </div>
+    <button (click)="save()">save</button>
+  </div>

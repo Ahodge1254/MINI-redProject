@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Game } from './models/game.model';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators'
+import { MessagesService } from './messages.service'
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,7 +17,7 @@ const httpOptions = {
 
 export class DbService {
   private dbUrl = 'http://localhost:5050/gamestuff/'
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private messageService: MessagesService) { }
 
   getGames() : Observable<Game[]> {
     return this.http.get<Game[]>(this.dbUrl)
@@ -31,8 +33,12 @@ export class DbService {
     return this.http.delete(url, httpOptions)
   }
 
-  updateGames(id: number): Observable<{}> {
+  updateGames(id: number, game: Game): Observable<any> {
     const url = `${this.dbUrl}edit/${id}`
-    return this.http.put(url, httpOptions)
+    return this.http.put(url, game, httpOptions)
+  }
+
+  private log(message: string) {
+    this.messageService.add(`HeroService: ${message}`);
   }
 }

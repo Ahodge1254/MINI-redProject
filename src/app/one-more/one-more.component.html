@@ -1,0 +1,20 @@
+<div *ngIf="selectedGame">
+
+    <h2>{{selectedGame.name | uppercase}} details</h2>
+    <div><span>id: </span>{{selectedGame.id}}</div>
+    <div>
+      <label>Name: 
+      <input [(ngModel)]="selectedGame.name" placeholder="name"/>
+      </label>
+      <label>Genre:
+      <input [(ngModel)]="selectedGame.genre" placeholder="genre"/>
+      </label>
+      <label>Age Rating: 
+      <input [(ngModel)]="selectedGame.ageRating" placeholder="ageRating"/>
+      </label>
+      <label>System: 
+      <input [(ngModel)]="selectedGame.system" placeholder="system"/>
+      </label>
+    </div>
+    <button (click)="save()">save</button>
+  </div>

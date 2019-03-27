@@ -3,14 +3,16 @@
 }
 
 .card {
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.5em 1em blue;
     transition: 0.3s;
     width: 30vw;
     text-align: center;
+    background-color: black;
+    color: white;
 }
 
 .card:hover {
-    box-shadow: 0.5em 0.5em 2em rgba(0, 0, 0, 0.2);
+    box-shadow: 0.5em 0.5em 2em greenyellow;
 }
 
 .cardContainer {

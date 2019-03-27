@@ -43,6 +43,7 @@
   </button>
 </form>
 
+
 <div *ngIf="games.length !== 0; else noGame">
   <app-display-game
   *ngFor="let game of games"

@@ -30,7 +30,7 @@ export class CreateGameComponent implements OnInit {
       system: new FormControl()
     })
 
-    this.findGames;
+    this.findGames();
   }
 
   onCreateGame() : void {
@@ -39,11 +39,18 @@ export class CreateGameComponent implements OnInit {
   }  
   
   findGames() : void {
-    console.log("finding Games")
     this.dbService.getGames().subscribe(Games => {
       this.games = Games;
       this.games.reverse();
     })
+  }
+
+  onDeleteGame(id) {
+    this.dbService.deleteGames(id).subscribe(
+      res => console.log(res),
+      err => console.log(err)
+    );
+    this.findGames();
   }
 
 }
